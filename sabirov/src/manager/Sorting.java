@@ -1,0 +1,5 @@
+package manager;
+
+public enum Sorting {
+    NAME, REVERSENAME, DATECREATED, REVERSEDATECREATED, ENDDATE, REVERSEENDDATE
+}

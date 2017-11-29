@@ -1,0 +1,120 @@
+package manager;
+
+import java.awt.*;
+import java.util.Calendar;
+import java.util.Comparator;
+import java.util.Date;
+
+public class Task implements Cloneable{
+    private String name;
+    private String description;
+    private int priority;
+    private Color color;
+    private Date dateCreation;
+    private Date endTime;
+    private StatusTask status;
+
+    public Task() {
+
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public Date getDateCreation() {
+        return dateCreation;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public StatusTask getStatus() {
+        return status;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPriority(int priority) {
+        if(0 <= priority && priority <= 10){
+            this.priority = priority;
+        }
+        throw new IllegalArgumentException("incorrect priority");
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public void setEndTime(Date date) {
+        endTime = date;
+    }
+
+    @Override
+    public Task clone() throws CloneNotSupportedException {
+        return (Task) super.clone();
+    }
+
+    public static class Comparators{
+        public static Comparator<Task> NAME = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        };
+
+        public static Comparator<Task> REVERSENAME = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o2.getName().compareTo(o1.getName());
+            }
+        };
+
+        public static Comparator<Task> DATECREATED = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o1.getDateCreation().compareTo(o2.getDateCreation());
+            }
+        };
+
+        public static Comparator<Task> REVERSEDATECREATED = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o2.getDateCreation().compareTo(o1.getDateCreation());
+            }
+        };
+
+        public static Comparator<Task> ENDDATE = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o1.getEndTime().compareTo(o2.getEndTime());
+            }
+        };
+
+        public static Comparator<Task> REVERSEENDDATE = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return o2.getEndTime().compareTo(o1.getEndTime());
+            }
+        };
+    }
+}
