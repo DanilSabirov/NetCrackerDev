@@ -8,14 +8,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ManagerModel implements ManagerModelInterfase {
 
-    private Map<Long , Task> tasks;
     private List<Task> sortedListTasks;
     private CopyOnWriteArrayList<Observer> observers;
     private Sorting sorting = Sorting.NAME;
-    private Random sequenceId = new Random(System.currentTimeMillis());
 
     public ManagerModel() {
-        tasks = new TreeMap<>();
         observers = new CopyOnWriteArrayList<>();
         sortedListTasks = new ArrayList<>();
     }
@@ -26,55 +23,46 @@ public class ManagerModel implements ManagerModelInterfase {
         }
     }
 
-    private long nextId(){
-        long newId ;
-        do{
-            newId = sequenceId.nextLong();
-        }
-        while (!tasks.containsKey(newId));
-        return newId;
-    }
-
     @Override
     public void initialize() {
-
+        notifySubscriber();
     }
 
     @Override
     public void addTask(Task task) {
-        tasks.put(/*nextId()*/ 0l, task);
-        updateList();
+        sortedListTasks.add(task);
+        sortList();
         notifySubscriber();
     }
 
     @Override
-    public void removeTask(long id){
-        if(tasks.remove(id) == null){
-            throw new IllegalArgumentException("task not found");
+    public void removeTask(int index){
+        if(0 <= index && index < sortedListTasks.size()){
+            sortedListTasks.remove(index);
         }
-        updateList();
+        else{
+            throw new IllegalArgumentException("Illegal index");
+        }
         notifySubscriber();
     }
 
     @Override
-    public void editTask(long id, Task newTask) {
-        Task tmp = tasks.get(id);
-        if(tmp != null){
-            tmp = newTask;
+    public void editTask(int index, Task newTask) {
+        if (0 <= index && index < sortedListTasks.size()){
+            sortedListTasks.set(index, newTask);
         }
         else {
-            throw new IllegalArgumentException("task not found");
+            throw new IllegalArgumentException("Illegal pos");
         }
-        updateList();
+        sortList();
         notifySubscriber();
     }
 
     @Override
-    public Task getTask(long id) {
-        Task tmp = tasks.get(id);
-        if(tmp != null){
+    public Task getTask(int index) {
+        if(0 <= index && index <= sortedListTasks.size()){
             try {
-                return tmp.clone();
+                return sortedListTasks.get(index).clone();
             } catch (CloneNotSupportedException e) {
                 e.printStackTrace();
             }
@@ -84,7 +72,7 @@ public class ManagerModel implements ManagerModelInterfase {
 
     @Override
     public int getNumberTask(){
-        return tasks.size();
+        return sortedListTasks.size();
     }
 
     @Override
@@ -130,13 +118,6 @@ public class ManagerModel implements ManagerModelInterfase {
             default:
                 throw new UnsupportedOperationException();
         }
-    }
-
-    private void updateList(){
-        List<Task> newList = new ArrayList<>();
-        newList.addAll(tasks.values());
-        sortedListTasks = newList;
-        sortList();
     }
 
     @Override

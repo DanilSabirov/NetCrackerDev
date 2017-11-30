@@ -6,9 +6,13 @@ import manager.model.ManagerModelInterfase;
 
 public abstract class BaseView implements Observer {
 
-    private ManagerModelInterfase model;
+    protected ManagerModelInterfase model;
+    protected ControllerInterface controller;
 
-    private ControllerInterface controller;
+    public BaseView(ManagerModelInterfase model, ControllerInterface controller) {
+        this.model = model;
+        this.controller = controller;
+    }
 
     public abstract void update();
 }

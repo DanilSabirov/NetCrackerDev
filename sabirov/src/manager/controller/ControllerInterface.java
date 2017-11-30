@@ -6,7 +6,7 @@ public interface ControllerInterface {
 
     public void addTask(Task task);
 
-    public void removeTask(Long id);
+    public void removeTask(int pos);
 
-    public void editTask(Long id, Task newTask);
+    public void editTask(int pos, Task newTask);
 }

@@ -11,11 +11,11 @@ public interface ManagerModelInterfase {
 
     public void addTask(Task task);
 
-    public void removeTask(long id);
+    public void removeTask(int index);
 
-    public void editTask(long id, Task newTask);
+    public void editTask(int index, Task newTask);
 
-    public Task getTask(long id);
+    public Task getTask(int index);
 
     public int getNumberTask();
 
