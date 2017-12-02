@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model>
+    <listTasks>
+        <task>
+            <name>Name</name>
+            <description>Desc</description>
+            <dateCreation>2017-12-02T23:26:36.514+03:00</dateCreation>
+            <endTime>2017-12-02T23:26:36.514+03:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>7</priority>
+        </task>
+        <task>
+            <name>Name1</name>
+            <description>Desc1</description>
+            <dateCreation>2017-12-02T23:26:36.514+03:00</dateCreation>
+            <endTime>2017-12-02T23:26:36.514+03:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+    </listTasks>
+</model>

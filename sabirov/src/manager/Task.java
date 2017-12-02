@@ -1,21 +1,30 @@
 package manager;
 
+import javax.xml.bind.annotation.*;
 import java.awt.*;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Date;
 
+@XmlAccessorType(XmlAccessType.NONE)
+@XmlType(propOrder = {"name", "description", "dateCreation", "endTime", "status", "priority"/*, "color"*/})
 public class Task implements Cloneable{
+    @XmlElement(required = true)
     private String name;
+    @XmlElement
     private String description;
-    private int priority;
-    private Color color;
+    @XmlElement(required = true)
+    private int priority = 5;
+ //   @XmlElement
+    private Color color = Color.WHITE;
+    @XmlElement(required = true)
     private Date dateCreation;
-    private Date endTime;
-    private StatusTask status;
+    @XmlElement
+    private Date endTime = null;
+    @XmlElement(required = true)
+    private StatusTask status = StatusTask.IN_PROGRESS;
 
     public Task() {
-
+        dateCreation = new Date();
     }
 
     public String getName() {
@@ -58,7 +67,9 @@ public class Task implements Cloneable{
         if(0 <= priority && priority <= 10){
             this.priority = priority;
         }
-        throw new IllegalArgumentException("incorrect priority");
+        else {
+            throw new IllegalArgumentException("incorrect priority");
+        }
     }
 
     public void setColor(Color color) {

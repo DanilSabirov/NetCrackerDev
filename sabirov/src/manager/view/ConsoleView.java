@@ -38,7 +38,13 @@ public class ConsoleView extends BaseView {
     }
 
     private void drawTask(Task task){
-        System.out.println("| " + task.getName() + " " + task.getDescription() + " " + task.getEndTime().toString());
+        System.out.print("| " + task.getName() + " " + task.getDescription() + " ");
+        if(task.getEndTime() == null){
+            System.out.println("null");
+        }
+        else{
+            System.out.println(task.getEndTime());
+        }
     }
 
     private void printLine(int len){

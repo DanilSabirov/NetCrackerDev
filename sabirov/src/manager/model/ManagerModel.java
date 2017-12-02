@@ -3,11 +3,16 @@ package manager.model;
 import manager.Observer;
 import manager.Sorting;
 import manager.Task;
+
+import javax.xml.bind.annotation.*;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@XmlRootElement(name = "model")
+@XmlAccessorType(XmlAccessType.NONE)
 public class ManagerModel implements ManagerModelInterfase {
-
+    @XmlElement(name = "task")
+    @XmlElementWrapper(name = "listTasks")
     private List<Task> sortedListTasks;
     private CopyOnWriteArrayList<Observer> observers;
     private Sorting sorting = Sorting.NAME;
@@ -25,7 +30,7 @@ public class ManagerModel implements ManagerModelInterfase {
 
     @Override
     public void initialize() {
-        notifySubscriber();
+
     }
 
     @Override
