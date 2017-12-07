@@ -2,18 +2,50 @@
 <model>
     <listTasks>
         <task>
-            <name>Name</name>
-            <description>Desc</description>
-            <dateCreation>2017-12-02T23:26:36.514+03:00</dateCreation>
-            <endTime>2017-12-02T23:26:36.514+03:00</endTime>
+            <name>Dev_1</name>
+            <description>TaskManager</description>
+            <dateCreation>2017-12-08T01:30:37.559+04:00</dateCreation>
+            <endTime>2017-12-30T01:30:37.556+04:00</endTime>
             <status>IN_PROGRESS</status>
-            <priority>7</priority>
+            <priority>10</priority>
         </task>
         <task>
-            <name>Name1</name>
-            <description>Desc1</description>
-            <dateCreation>2017-12-02T23:26:36.514+03:00</dateCreation>
-            <endTime>2017-12-02T23:26:36.514+03:00</endTime>
+            <name>Java 7</name>
+            <description>Thread</description>
+            <dateCreation>2017-12-08T01:30:37.560+04:00</dateCreation>
+            <endTime>2018-01-14T01:30:37.556+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>SQL_6</name>
+            <description>Operator WITH</description>
+            <dateCreation>2017-12-08T01:30:37.560+04:00</dateCreation>
+            <endTime>2018-01-07T01:30:37.556+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>SQL_7</name>
+            <description>EAV</description>
+            <dateCreation>2017-12-08T01:30:37.560+04:00</dateCreation>
+            <endTime>2018-01-14T01:30:37.556+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>SQL_8</name>
+            <description>Analytics functions in oracle</description>
+            <dateCreation>2017-12-08T01:30:37.560+04:00</dateCreation>
+            <endTime>2018-01-21T01:30:37.556+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>dev</name>
+            <description>Server</description>
+            <dateCreation>2017-12-08T01:30:37.560+04:00</dateCreation>
+            <endTime>2018-01-30T01:30:37.556+04:00</endTime>
             <status>IN_PROGRESS</status>
             <priority>6</priority>
         </task>

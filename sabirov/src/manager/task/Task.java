@@ -1,4 +1,4 @@
-package manager;
+package manager.task;
 
 import javax.xml.bind.annotation.*;
 import java.awt.*;

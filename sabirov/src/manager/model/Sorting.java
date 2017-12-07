@@ -1,4 +1,4 @@
-package manager;
+package manager.model;
 
 public enum Sorting {
     NAME, REVERSENAME, DATECREATED, REVERSEDATECREATED, ENDDATE, REVERSEENDDATE

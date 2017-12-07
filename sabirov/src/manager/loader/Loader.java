@@ -1,4 +1,4 @@
-package manager;
+package manager.loader;
 
 import manager.model.ManagerModelInterfase;
 

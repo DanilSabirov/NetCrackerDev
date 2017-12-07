@@ -1,51 +1,132 @@
 package manager;
 
-import manager.controller.Controller;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import manager.controller.ConsoleController;
 import manager.controller.ControllerInterface;
+import manager.controller.MainWindowController;
+import manager.loader.Loader;
+import manager.loader.XMLLoader;
 import manager.model.ManagerModel;
 import manager.model.ManagerModelInterfase;
-import manager.view.ConsoleView;
+import manager.saver.Saver;
+import manager.saver.XMLSaver;
+import manager.task.Task;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.awt.*;
-import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Calendar;
 import java.util.Date;
 
-public class Main {
+public class Main extends Application{
+    public static FXMLLoader loaderFXML;
+    private static ControllerInterface controller;
+    private static ManagerModelInterfase model;
+    private static Path pathModel = Paths.get("save.xml");
+
     public static void main(String[] args) {
-        ManagerModelInterfase model;
-        Path path = Paths.get("save.xml");
+        args = new String[1];
+        args[0] = "-c";
+        if (args.length == 0){
+            launch(args);
+        }
+        else if (args[0].equals("-c")  || args[0].equals("--console")){
+            startConsole();
+        }
+        Runtime.getRuntime().exit(0);
+    }
 
+    private static void startConsole() {
+        loadModel();
+        controller = new ConsoleController(model);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        loadModel();
+
+        loaderFXML = new FXMLLoader(getClass().getResource("view/fxml/mainWindow.fxml"));
+        Parent root = loaderFXML.load();
+
+        controller = new MainWindowController(model);
+
+        primaryStage.setTitle("Task manager");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
+    private static void loadModel(){
         Loader loader = new XMLLoader();
-        model = loader.load(path);
+        model = loader.load(pathModel);
+    }
 
-        ControllerInterface controller = new Controller(model);
-/*
-        Task t = new Task();
-        t.setName("Name");
-        t.setDescription("Desc");
-        t.setEndTime(new Date());
-        t.setColor(new Color(100, 155, 255));
-        t.setPriority(7);
+    private static void saveModel(){
+        Saver saver = new XMLSaver();
+        saver.save(pathModel, model);
+    }
+
+    private void addTestTasks(ControllerInterface controller){
+        Calendar cal = Calendar.getInstance();
 
         Task t1 = new Task();
-        t1.setName("Name1");
-        t1.setDescription("Desc1");
-        t1.setEndTime(new Date());
-        t1.setColor(new Color(1, 15, 55));
-        t1.setPriority(6);
+        t1.setName("Dev_1");
+        t1.setDescription("TaskManager");
+        cal.set(2017, 11, 30);
+        t1.setEndTime(cal.getTime());
+        t1.setColor(new Color(255, 0, 0));
+        t1.setPriority(10);
+
+        Task t2 = new Task();
+        t2.setName("SQL_6");
+        t2.setDescription("Operator WITH");
+        cal.set(2017, 12, 7);
+        t2.setEndTime(cal.getTime());
+        t2.setColor(new Color(10, 150, 55));
+        t2.setPriority(6);
+
+        Task t3 = new Task();
+        t3.setName("SQL_7");
+        t3.setDescription("EAV");
+        cal.set(2017, 12, 14);
+        t3.setEndTime(cal.getTime());
+        t3.setColor(new Color(10, 150, 55));
+        t3.setPriority(6);
+
+        Task t4 = new Task();
+        t4.setName("Java 7");
+        t4.setDescription("Thread");
+        cal.set(2017, 12, 14);
+        t4.setEndTime(cal.getTime());
+        t4.setColor(new Color(100, 150, 205));
+        t4.setPriority(6);
+
+        Task t5 = new Task();
+        t5.setName("SQL_8");
+        t5.setDescription("Analytics functions in oracle");
+        cal.set(2017, 12, 21);
+        t5.setEndTime(cal.getTime());
+        t5.setColor(new Color(10, 150, 55));
+        t5.setPriority(6);
+
+        Task t6 = new Task();
+        t6.setName("dev");
+        t6.setDescription("Server");
+        cal.set(2017, 12, 30);
+        t6.setEndTime(cal.getTime());
+        t6.setColor(new Color(255, 0, 0));
+        t6.setPriority(6);
 
         controller.addTask(t1);
-        controller.addTask(t);
-*/
-
-     //   Saver saver = new XMLSaver();
-     //   saver.save(path, model);
-
-
+        controller.addTask(t2);
+        controller.addTask(t3);
+        controller.addTask(t4);
+        controller.addTask(t5);
+        controller.addTask(t6);
     }
+
+
 }

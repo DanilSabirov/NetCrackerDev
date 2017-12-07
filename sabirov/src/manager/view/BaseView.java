@@ -9,9 +9,15 @@ public abstract class BaseView implements Observer {
     protected ManagerModelInterfase model;
     protected ControllerInterface controller;
 
-    public BaseView(ManagerModelInterfase model, ControllerInterface controller) {
-        this.model = model;
-        this.controller = controller;
+    public void initialize(ManagerModelInterfase model, ControllerInterface controller){
+        if (model != null && controller != null){
+            this.model = model;
+            this.controller = controller;
+            model.registerObserver(this);
+        }
+        else {
+            throw new NullPointerException();
+        }
     }
 
     public abstract void update();

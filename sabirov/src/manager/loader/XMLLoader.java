@@ -1,4 +1,4 @@
-package manager;
+package manager.loader;
 
 import manager.model.ManagerModelInterfase;
 import manager.model.ManagerModel;
@@ -17,7 +17,7 @@ public class XMLLoader implements Loader{
             Unmarshaller unmarshaller = context.createUnmarshaller();
             model = (ManagerModel) unmarshaller.unmarshal(path.toFile());
         } catch (JAXBException e) {
-            e.printStackTrace();
+            model = new ManagerModel();
         }
         return model;
     }

@@ -1,6 +1,6 @@
 package manager.view;
 
-import manager.Task;
+import manager.task.Task;
 import manager.controller.ControllerInterface;
 import manager.model.ManagerModelInterfase;
 
@@ -12,44 +12,46 @@ public class ConsoleView extends BaseView {
     private String command;
     private final int WIDTH = 40;
 
-    public ConsoleView(ManagerModelInterfase model, ControllerInterface controller) {
-        super(model, controller);
-        model.registerObserver(this);
+    public ConsoleView() {
+
     }
 
     private void draw(){
-        try {
-            Runtime.getRuntime().exec("clear");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         drawHead();
         drawAllTask(model.getListTasks());
+        System.out.println("Number tasks: " + model.getNumberTask());
+        printLine(WIDTH, '/');
+        System.out.println('\n');
     }
 
     private void drawAllTask(List<Task> listTasks){
-        for(Task t: listTasks){
-            drawTask(t);
+        for(int i = 0; i < listTasks.size(); i++){
+            System.out.println("Num: " + (i + 1));
+            drawTask(listTasks.get(i));
+            printLine(WIDTH, '-');
+            System.out.println();
         }
     }
 
     private void drawHead(){
-        System.out.println("|     Name       |       Description      |       End date    |");
+        printLine(WIDTH, '#');
+        System.out.println();
     }
 
     private void drawTask(Task task){
-        System.out.print("| " + task.getName() + " " + task.getDescription() + " ");
-        if(task.getEndTime() == null){
-            System.out.println("null");
-        }
-        else{
-            System.out.println(task.getEndTime());
+        System.out.println(task.getName());
+        System.out.println();
+        System.out.println(task.getDescription());
+        System.out.println();
+        System.out.println("End date: " + task.getEndTime());
+        if(task.getDateCreation() != null){
+            System.out.println("Created: " + task.getDateCreation());
         }
     }
 
-    private void printLine(int len){
+    private void printLine(int len, char c){
         for(int i = 0; i < len; i++){
-            System.out.print("-");
+            System.out.print(c);
         }
     }
 

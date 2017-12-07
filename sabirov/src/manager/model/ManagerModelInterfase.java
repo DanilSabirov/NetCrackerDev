@@ -1,8 +1,7 @@
 package manager.model;
 
 import manager.Observer;
-import manager.Sorting;
-import manager.Task;
+import manager.task.Task;
 
 import java.util.List;
 

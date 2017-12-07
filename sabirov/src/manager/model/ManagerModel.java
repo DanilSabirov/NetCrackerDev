@@ -1,8 +1,7 @@
 package manager.model;
 
 import manager.Observer;
-import manager.Sorting;
-import manager.Task;
+import manager.task.Task;
 
 import javax.xml.bind.annotation.*;
 import java.util.*;
@@ -11,10 +10,13 @@ import java.util.concurrent.CopyOnWriteArrayList;
 @XmlRootElement(name = "model")
 @XmlAccessorType(XmlAccessType.NONE)
 public class ManagerModel implements ManagerModelInterfase {
+
     @XmlElement(name = "task")
     @XmlElementWrapper(name = "listTasks")
     private List<Task> sortedListTasks;
+
     private CopyOnWriteArrayList<Observer> observers;
+
     private Sorting sorting = Sorting.NAME;
 
     public ManagerModel() {
@@ -84,8 +86,8 @@ public class ManagerModel implements ManagerModelInterfase {
     public void registerObserver(Observer observer) {
         if (observers.indexOf(observer) == -1){
             observers.add(observer);
+            observer.update();
         }
-        notifySubscriber();
     }
 
     @Override
@@ -126,7 +128,7 @@ public class ManagerModel implements ManagerModelInterfase {
     }
 
     @Override
-    public List getListTasks() {
+    public List<Task> getListTasks() {
         return sortedListTasks;
     }
 }

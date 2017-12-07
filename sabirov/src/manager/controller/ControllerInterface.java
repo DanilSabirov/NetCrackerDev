@@ -1,6 +1,6 @@
 package manager.controller;
 
-import manager.Task;
+import manager.task.Task;
 
 public interface ControllerInterface {
 
