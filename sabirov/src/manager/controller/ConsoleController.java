@@ -1,5 +1,6 @@
 package manager.controller;
 
+import manager.model.Sorting;
 import manager.task.Task;
 import manager.model.ManagerModelInterfase;
 import manager.view.BaseView;
@@ -17,15 +18,28 @@ public class ConsoleController implements ControllerInterface {
         this.view.initialize(this.model, this);
     }
 
+    @Override
     public void addTask(Task task) {
-        model.addTask(task);
+        if (task.getName() == null && task.getDescription() == null){
+            System.out.println("Task not added");
+        }
+        else {
+            model.addTask(task);
+        }
     }
 
+    @Override
     public void removeTask(int pos) {
         model.removeTask(pos);
     }
 
+    @Override
     public void editTask(int pos, Task newTask) {
         model.editTask(pos, newTask);
+    }
+
+    @Override
+    public void changeSorting(Sorting sorting) {
+        model.changeSorting(sorting);
     }
 }

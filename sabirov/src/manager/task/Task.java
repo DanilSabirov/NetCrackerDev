@@ -10,16 +10,22 @@ import java.util.Date;
 public class Task implements Cloneable{
     @XmlElement(required = true)
     private String name;
+
     @XmlElement
     private String description;
+
     @XmlElement(required = true)
     private int priority = 5;
+
  //   @XmlElement
     private Color color = Color.WHITE;
+
     @XmlElement(required = true)
     private Date dateCreation;
+
     @XmlElement
     private Date endTime = null;
+
     @XmlElement(required = true)
     private StatusTask status = StatusTask.IN_PROGRESS;
 

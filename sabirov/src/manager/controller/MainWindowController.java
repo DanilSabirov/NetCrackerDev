@@ -1,6 +1,7 @@
 package manager.controller;
 
 import manager.Main;
+import manager.model.Sorting;
 import manager.task.Task;
 import manager.model.ManagerModelInterfase;
 import manager.view.BaseView;
@@ -29,6 +30,11 @@ public class MainWindowController implements ControllerInterface {
 
     @Override
     public void editTask(int pos, Task newTask) {
+
+    }
+
+    @Override
+    public void changeSorting(Sorting sorting) {
 
     }
 }
