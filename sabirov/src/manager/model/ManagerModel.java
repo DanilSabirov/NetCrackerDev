@@ -1,6 +1,9 @@
 package manager.model;
 
+import manager.Main;
 import manager.Observer;
+import manager.saver.Saver;
+import manager.saver.XMLSaver;
 import manager.task.Task;
 
 import javax.xml.bind.annotation.*;
@@ -86,7 +89,6 @@ public class ManagerModel implements ManagerModelInterfase {
     public void registerObserver(Observer observer) {
         if (observers.indexOf(observer) == -1){
             observers.add(observer);
-            observer.update();
         }
     }
 
@@ -130,5 +132,11 @@ public class ManagerModel implements ManagerModelInterfase {
     @Override
     public List<Task> getListTasks() {
         return sortedListTasks;
+    }
+
+    @Override
+    public void save() {
+        Saver saver = new XMLSaver();
+        saver.save(Main.pathModel, this);
     }
 }

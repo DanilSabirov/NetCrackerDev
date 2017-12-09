@@ -9,7 +9,7 @@ public abstract class BaseView implements Observer {
     protected ManagerModelInterfase model;
     protected ControllerInterface controller;
 
-    public void initialize(ManagerModelInterfase model, ControllerInterface controller){
+    public BaseView(ManagerModelInterfase model, ControllerInterface controller){
         if (model != null && controller != null){
             this.model = model;
             this.controller = controller;

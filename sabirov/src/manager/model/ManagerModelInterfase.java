@@ -25,4 +25,6 @@ public interface ManagerModelInterfase {
     public void changeSorting(Sorting sorting);
 
     public List getListTasks();
+
+    public void save();
 }

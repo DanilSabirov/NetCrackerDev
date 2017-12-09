@@ -12,4 +12,6 @@ public interface ControllerInterface {
     public void editTask(int pos, Task newTask);
 
     public void changeSorting(Sorting sorting);
+
+    public void save();
 }

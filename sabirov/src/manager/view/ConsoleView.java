@@ -1,16 +1,15 @@
 package manager.view;
 
 import manager.model.Sorting;
-import manager.task.StatusTask;
 import manager.task.Task;
 import manager.controller.ControllerInterface;
 import manager.model.ManagerModelInterfase;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static com.sun.deploy.util.SessionState.save;
 
 public class ConsoleView extends BaseView {
 
@@ -18,8 +17,10 @@ public class ConsoleView extends BaseView {
     private final int WIDTH = 40;
     private Scanner in;
 
-    public ConsoleView() {
+    public ConsoleView(ManagerModelInterfase model, ControllerInterface controller) {
+        super(model, controller);
         in = new Scanner(System.in);
+        update();
     }
 
     private void draw(){
@@ -32,9 +33,9 @@ public class ConsoleView extends BaseView {
     }
 
     private void waitCommand(){
-        System.out.println("1 - Add new task | 2 - Remove task | 3 - Change sorting");
         String command;
         do {
+            System.out.println("1 - Add new task | 2 - Remove task | 3 - Change sorting \nq - quit");
             command = in.next();
             switch (command){
                 case "1":
@@ -46,8 +47,11 @@ public class ConsoleView extends BaseView {
                 case "3":
                     drawChangeSorting();
                     break;
+                case "q":
+                    quit();
+
             }
-        }while (!command.equals("1") && !command.equals("2"));
+        }while (!command.equals("1") && !command.equals("2") && !command.equals("q"));
     }
 
     private void drawAddTask(){
@@ -133,6 +137,18 @@ public class ConsoleView extends BaseView {
             v = in.nextInt();
         }while (!(1 <= v && v <= len));
         controller.changeSorting(Sorting.values()[v - 1]);
+    }
+
+    private void quit(){
+        String isOk;
+        System.out.println("Save? (Y, N) ");
+        do{
+            isOk = in.next();
+        }while (!isOk.equals("Y") && !isOk.equals("N"));
+        if(isOk.equals("Y")){
+            controller.save();
+        }
+        return;
     }
 
     private void drawAllTask(List<Task> listTasks){

@@ -1,8 +1,6 @@
 package manager;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import manager.controller.ConsoleController;
@@ -10,27 +8,21 @@ import manager.controller.ControllerInterface;
 import manager.controller.MainWindowController;
 import manager.loader.Loader;
 import manager.loader.XMLLoader;
-import manager.model.ManagerModel;
 import manager.model.ManagerModelInterfase;
-import manager.saver.Saver;
-import manager.saver.XMLSaver;
 import manager.task.Task;
 
 import java.awt.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Main extends Application{
-    public static FXMLLoader loaderFXML;
-    private static ControllerInterface controller;
     private static ManagerModelInterfase model;
-    private static Path pathModel = Paths.get("save.xml");
+    public static Path pathModel = Paths.get("save.xml");
 
     public static void main(String[] args) {
-        args = new String[1];
-        args[0] = "-c";
+      //  args = new String[1];
+      //  args[0] = "-c";
         if (args.length == 0){
             launch(args);
         }
@@ -42,31 +34,22 @@ public class Main extends Application{
 
     private static void startConsole() {
         loadModel();
-        controller = new ConsoleController(model);
+        ControllerInterface controller = new ConsoleController(model);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         loadModel();
-
-        loaderFXML = new FXMLLoader(getClass().getResource("view/fxml/mainWindow.fxml"));
-        Parent root = loaderFXML.load();
-
-        controller = new MainWindowController(model);
+        MainWindowController controller = new MainWindowController(model);
 
         primaryStage.setTitle("Task manager");
-        primaryStage.setScene(new Scene(root));
+        primaryStage.setScene(new Scene(controller.getViewRoot()));
         primaryStage.show();
     }
 
     private static void loadModel(){
         Loader loader = new XMLLoader();
         model = loader.load(pathModel);
-    }
-
-    private static void saveModel(){
-        Saver saver = new XMLSaver();
-        saver.save(pathModel, model);
     }
 
     private void addTestTasks(ControllerInterface controller){

@@ -12,10 +12,8 @@ public class ConsoleController implements ControllerInterface {
     private ManagerModelInterfase model;
 
     public ConsoleController(ManagerModelInterfase model) {
-        this.view = new ConsoleView();
         this.model = model;
-
-        this.view.initialize(this.model, this);
+        this.view = new ConsoleView(model, this);
     }
 
     @Override
@@ -41,5 +39,10 @@ public class ConsoleController implements ControllerInterface {
     @Override
     public void changeSorting(Sorting sorting) {
         model.changeSorting(sorting);
+    }
+
+    @Override
+    public void save() {
+        model.save();
     }
 }
