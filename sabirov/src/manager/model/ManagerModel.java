@@ -124,6 +124,12 @@ public class ManagerModel implements ManagerModelInterfase {
             case REVERSEENDDATE:
                 Collections.sort(sortedListTasks, Task.Comparators.REVERSEENDDATE);
                 break;
+            case PRIORITY:
+                Collections.sort(sortedListTasks, Task.Comparators.PRIORITY);
+                break;
+            case REVERSEPRIORITY:
+                Collections.sort(sortedListTasks, Task.Comparators.REVERSEPRIORITY);
+                break;
             default:
                 throw new UnsupportedOperationException();
         }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="514.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="514.0"  xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="172.0" layoutY="58.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -33,10 +33,8 @@
                            <children>
                               <SplitMenuButton layoutX="-63.0" layoutY="23.0" mnemonicParsing="false" text="..." AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                 <items>
-                                  <MenuItem mnemonicParsing="false" text="Action 1" />
-                                  <MenuItem mnemonicParsing="false" text="Action 2" />
-                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
-                                    <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                  <MenuItem fx:id="editItem" mnemonicParsing="false" onAction="#onClickEdit" text="Edit" />
+                                  <MenuItem fx:id="deleteItem" mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
                                 </items>
                               </SplitMenuButton>
                            </children>

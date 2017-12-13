@@ -4,8 +4,8 @@
         <task>
             <name>Dev_1</name>
             <description>TaskManager</description>
-            <dateCreation>2017-12-08T01:30:37.559+04:00</dateCreation>
-            <endTime>2017-12-30T01:30:37.556+04:00</endTime>
+            <dateCreation>2017-12-14T01:16:45.064+04:00</dateCreation>
+            <endTime>2017-12-30T00:00:00+04:00</endTime>
             <status>IN_PROGRESS</status>
             <priority>10</priority>
         </task>

@@ -18,12 +18,13 @@ public class MainWindowController implements ControllerInterface {
 
     @Override
     public void addTask(Task task) {
-        model.addTask(task);
+        AddController addController = new AddController(model);
+        addController.addTask();
     }
 
     @Override
     public void removeTask(int pos) {
-
+        model.removeTask(pos);
     }
 
     @Override
@@ -33,7 +34,7 @@ public class MainWindowController implements ControllerInterface {
 
     @Override
     public void changeSorting(Sorting sorting) {
-
+        model.changeSorting(sorting);
     }
 
     @Override

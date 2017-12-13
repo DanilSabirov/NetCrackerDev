@@ -1,7 +1,8 @@
 package manager.task;
 
+import javafx.scene.paint.Color;
+
 import javax.xml.bind.annotation.*;
-import java.awt.*;
 import java.util.Comparator;
 import java.util.Date;
 
@@ -95,6 +96,12 @@ public class Task implements Cloneable{
         public static Comparator<Task> NAME = new Comparator<Task>(){
             @Override
             public int compare(Task o1, Task o2) {
+                if(o1.getName() == null){
+                    return -1;
+                }
+                if(o2.getName() == null){
+                    return 1;
+                }
                 return o1.getName().compareTo(o2.getName());
             }
         };
@@ -102,6 +109,12 @@ public class Task implements Cloneable{
         public static Comparator<Task> REVERSENAME = new Comparator<Task>(){
             @Override
             public int compare(Task o1, Task o2) {
+                if(o1.getName() == null){
+                    return 1;
+                }
+                if(o2.getName() == null){
+                    return -1;
+                }
                 return o2.getName().compareTo(o1.getName());
             }
         };
@@ -123,6 +136,12 @@ public class Task implements Cloneable{
         public static Comparator<Task> ENDDATE = new Comparator<Task>(){
             @Override
             public int compare(Task o1, Task o2) {
+                if(o1.getEndTime() == null){
+                    return -1;
+                }
+                if(o2.getEndTime() == null){
+                    return 1;
+                }
                 return o1.getEndTime().compareTo(o2.getEndTime());
             }
         };
@@ -130,7 +149,27 @@ public class Task implements Cloneable{
         public static Comparator<Task> REVERSEENDDATE = new Comparator<Task>(){
             @Override
             public int compare(Task o1, Task o2) {
+                if(o1.getEndTime() == null){
+                    return 1;
+                }
+                if(o2.getEndTime() == null){
+                    return -1;
+                }
                 return o2.getEndTime().compareTo(o1.getEndTime());
+            }
+        };
+
+        public static Comparator<Task> PRIORITY = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return Integer.compare(o2.getPriority(), o1.getPriority());
+            }
+        };
+
+        public static Comparator<Task> REVERSEPRIORITY = new Comparator<Task>(){
+            @Override
+            public int compare(Task o1, Task o2) {
+                return Integer.compare(o1.getPriority(), o2.getPriority());
             }
         };
     }

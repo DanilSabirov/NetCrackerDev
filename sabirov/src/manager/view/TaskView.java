@@ -1,9 +1,12 @@
 package manager.view;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import manager.controller.TaskViewController;
 import manager.task.Task;
@@ -27,6 +30,12 @@ public class TaskView {
     @FXML
     private Label priority;
 
+    @FXML
+    private MenuItem editItem;
+
+    @FXML
+    private MenuItem deleteItem;
+
     Parent root;
 
     private FXMLLoader fxmlLoader;
@@ -34,13 +43,13 @@ public class TaskView {
     private TaskViewController controller;
 
     public TaskView(TaskViewController controller) {
-        fxmlLoader = new FXMLLoader(getClass().getResource("fxml/taskView.fxml"));
+        fxmlLoader = new  FXMLLoader(getClass().getResource("fxml/taskView.fxml"));
         fxmlLoader.setController(this);
+        this.controller = controller;
         try {
             root = fxmlLoader.load();
         } catch (IOException e) {
             e.printStackTrace();
-            Runtime.getRuntime().exit(2);
         }
     }
 
@@ -66,5 +75,15 @@ public class TaskView {
 
     public Parent getRoot() {
         return root;
+    }
+
+    @FXML
+    private void onClickEdit(){
+        controller.editTask();
+    }
+
+    @FXML
+    private void onClickDelete(ActionEvent actionEvent) {
+        controller.removeTask();
     }
 }

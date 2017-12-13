@@ -2,6 +2,7 @@ package manager;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import manager.controller.ConsoleController;
 import manager.controller.ControllerInterface;
@@ -11,14 +12,16 @@ import manager.loader.XMLLoader;
 import manager.model.ManagerModelInterfase;
 import manager.task.Task;
 
-import java.awt.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Calendar;
 
 public class Main extends Application{
     private static ManagerModelInterfase model;
+
     public static Path pathModel = Paths.get("save.xml");
+
+    private static Stage stage;
 
     public static void main(String[] args) {
       //  args = new String[1];
@@ -39,6 +42,7 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        stage = primaryStage;
         loadModel();
         MainWindowController controller = new MainWindowController(model);
 
@@ -52,6 +56,10 @@ public class Main extends Application{
         model = loader.load(pathModel);
     }
 
+    public static Stage getStage() {
+        return stage;
+    }
+
     private void addTestTasks(ControllerInterface controller){
         Calendar cal = Calendar.getInstance();
 
@@ -60,7 +68,7 @@ public class Main extends Application{
         t1.setDescription("TaskManager");
         cal.set(2017, 11, 30);
         t1.setEndTime(cal.getTime());
-        t1.setColor(new Color(255, 0, 0));
+        t1.setColor(Color.color(255f, 0f, 0f));
         t1.setPriority(10);
 
         Task t2 = new Task();
@@ -68,7 +76,7 @@ public class Main extends Application{
         t2.setDescription("Operator WITH");
         cal.set(2017, 12, 7);
         t2.setEndTime(cal.getTime());
-        t2.setColor(new Color(10, 150, 55));
+        t2.setColor(Color.color(10, 150, 55));
         t2.setPriority(6);
 
         Task t3 = new Task();
@@ -76,7 +84,7 @@ public class Main extends Application{
         t3.setDescription("EAV");
         cal.set(2017, 12, 14);
         t3.setEndTime(cal.getTime());
-        t3.setColor(new Color(10, 150, 55));
+        t3.setColor(Color.color(10, 150, 55));
         t3.setPriority(6);
 
         Task t4 = new Task();
@@ -84,7 +92,7 @@ public class Main extends Application{
         t4.setDescription("Thread");
         cal.set(2017, 12, 14);
         t4.setEndTime(cal.getTime());
-        t4.setColor(new Color(100, 150, 205));
+        t4.setColor(Color.color(100, 150, 205));
         t4.setPriority(6);
 
         Task t5 = new Task();
@@ -92,7 +100,7 @@ public class Main extends Application{
         t5.setDescription("Analytics functions in oracle");
         cal.set(2017, 12, 21);
         t5.setEndTime(cal.getTime());
-        t5.setColor(new Color(10, 150, 55));
+        t5.setColor(Color.color(10, 150, 55));
         t5.setPriority(6);
 
         Task t6 = new Task();
@@ -100,7 +108,7 @@ public class Main extends Application{
         t6.setDescription("Server");
         cal.set(2017, 12, 30);
         t6.setEndTime(cal.getTime());
-        t6.setColor(new Color(255, 0, 0));
+        t6.setColor(Color.color(255, 0, 0));
         t6.setPriority(6);
 
         controller.addTask(t1);
