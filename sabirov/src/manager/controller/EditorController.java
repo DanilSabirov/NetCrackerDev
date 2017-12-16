@@ -6,6 +6,7 @@ import manager.view.EditorView;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 
 public class EditorController extends Editor{
@@ -26,15 +27,22 @@ public class EditorController extends Editor{
 
         view.name.setText(task.getName());
         view.description.setText(task.getDescription());
-        view.endDate.setValue(task.getEndTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         view.priority.getSelectionModel().select(task.getPriority());
         view.color.setValue(task.getColor());
+        if (task.getEndTime() != null){
+            view.endDate.setValue(task.getEndTime().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(task.getEndTime());
+
+            view.hours.getSelectionModel().select(calendar.get(Calendar.HOUR));
+            view.minutes.getSelectionModel().select(calendar.get(Calendar.MINUTE));
+        }
     }
 
     @Override
     public void save() {
         Task task = parseTask();
         model.editTask(indexTask, task);
-        model.save();
     }
 }

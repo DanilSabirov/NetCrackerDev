@@ -1,9 +1,9 @@
 package manager.saver;
 
-import manager.model.ManagerModelInterfase;
+import manager.journal.XMLJournalTasks;
 
 import java.nio.file.Path;
 
 public interface Saver {
-    public void save(Path path, ManagerModelInterfase task);
+    public void save(Path path, XMLJournalTasks journal);
 }

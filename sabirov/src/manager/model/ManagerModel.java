@@ -1,41 +1,67 @@
 package manager.model;
 
+import manager.DialogNotification;
 import manager.Main;
 import manager.Observer;
+import manager.journal.JournalTasks;
+import manager.journal.XMLJournalTasks;
 import manager.saver.Saver;
 import manager.saver.XMLSaver;
 import manager.task.Task;
 
-import javax.xml.bind.annotation.*;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-@XmlRootElement(name = "model")
-@XmlAccessorType(XmlAccessType.NONE)
 public class ManagerModel implements ManagerModelInterfase {
+    private JournalTasks journal;
 
-    @XmlElement(name = "task")
-    @XmlElementWrapper(name = "listTasks")
     private List<Task> sortedListTasks;
 
     private CopyOnWriteArrayList<Observer> observers;
 
     private Sorting sorting = Sorting.NAME;
 
-    public ManagerModel() {
-        observers = new CopyOnWriteArrayList<>();
-        sortedListTasks = new ArrayList<>();
+    private List<Timer> timers;
+
+    public ManagerModel(JournalTasks journal) {
+        this.journal = journal;
+        initialize();
     }
 
     private void notifySubscriber(){
         for(Observer o: observers){
             o.update();
         }
+        updateNotifications();
     }
 
     @Override
     public void initialize() {
+        sortedListTasks = journal.loadAllTasks();
+        timers = new ArrayList<>();
+        observers = new CopyOnWriteArrayList<>();
+    }
 
+    private void updateNotifications(){
+        clearTimers();
+        for(Task task: sortedListTasks){
+            Date endTime = task.getEndTime();
+            if(endTime != null && endTime.compareTo(new Date()) == 1){
+                DialogNotification dialog = new DialogNotification(task);
+                Timer timer = new Timer(true);
+
+                timer.schedule(dialog, endTime);
+
+                timers.add(timer);
+            }
+        }
+    }
+
+    private void clearTimers(){
+        for (Timer timer: timers){
+            timer.cancel();
+        }
+        timers.clear();
     }
 
     @Override
@@ -143,6 +169,6 @@ public class ManagerModel implements ManagerModelInterfase {
     @Override
     public void save() {
         Saver saver = new XMLSaver();
-        saver.save(Main.pathModel, this);
+        saver.save(Main.pathJournal, (XMLJournalTasks) journal);
     }
 }

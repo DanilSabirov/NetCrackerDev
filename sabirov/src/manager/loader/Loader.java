@@ -1,9 +1,9 @@
 package manager.loader;
 
-import manager.model.ManagerModelInterfase;
+import manager.journal.XMLJournalTasks;
 
 import java.nio.file.Path;
 
 public interface Loader {
-    ManagerModelInterfase load(Path path);
+    public XMLJournalTasks load(Path path);
 }

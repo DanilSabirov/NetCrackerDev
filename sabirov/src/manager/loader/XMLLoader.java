@@ -1,6 +1,6 @@
 package manager.loader;
 
-import manager.model.ManagerModelInterfase;
+import manager.journal.XMLJournalTasks;
 import manager.model.ManagerModel;
 
 import javax.xml.bind.JAXBContext;
@@ -8,17 +8,18 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 import java.nio.file.Path;
 
-public class XMLLoader implements Loader{
+public class XMLLoader implements Loader {
     @Override
-    public ManagerModelInterfase load(Path path) {
-        ManagerModel model = null;
+    public XMLJournalTasks load(Path path) {
+        XMLJournalTasks journal = null;
         try {
-            JAXBContext context = JAXBContext.newInstance(ManagerModel.class);
+            JAXBContext context = JAXBContext.newInstance(XMLJournalTasks.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            model = (ManagerModel) unmarshaller.unmarshal(path.toFile());
+            journal = (XMLJournalTasks) unmarshaller.unmarshal(path.toFile());
         } catch (JAXBException e) {
-            model = new ManagerModel();
+            System.err.println("Error load journal");
+            journal = new XMLJournalTasks();
         }
-        return model;
+        return journal;
     }
 }

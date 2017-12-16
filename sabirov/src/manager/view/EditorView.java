@@ -36,10 +36,17 @@ public class EditorView {
     public ChoiceBox<Integer> priority;
 
     @FXML
+    public ChoiceBox<Integer> hours;
+
+    @FXML
+    public ChoiceBox<Integer> minutes;
+
+    @FXML
     public ColorPicker color;
 
     @FXML
     public Button saver;
+
 
     private Parent root;
 
@@ -59,6 +66,7 @@ public class EditorView {
             e.printStackTrace();
         }
         initPriority();
+        initTime();
     }
 
     private void initPriority(){
@@ -70,10 +78,22 @@ public class EditorView {
         priority.getSelectionModel().select(5);
     }
 
-    public void show(String title){
-        if(root == null){
-            Runtime.getRuntime().exit(0);
+    private void initTime(){
+        ArrayList<Integer> hours = new ArrayList<>(24);
+        ArrayList<Integer> minutes = new ArrayList<>(60);
+        for(int i = 0; i < 24; i++){
+            hours.add(i);
         }
+        for(int i = 0; i < 60; i++){
+            minutes.add(i);
+        }
+        this.hours.setItems(FXCollections.observableArrayList(hours));
+        this.minutes.setItems(FXCollections.observableArrayList(minutes));
+        this.hours.getSelectionModel().select(0);
+        this.minutes.getSelectionModel().select(0);
+    }
+
+    public void show(String title){
         dialogStage = new Stage();
         dialogStage.setTitle(title);
         dialogStage.initModality(Modality.WINDOW_MODAL);

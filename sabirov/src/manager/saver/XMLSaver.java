@@ -1,7 +1,7 @@
 package manager.saver;
 
+import manager.journal.XMLJournalTasks;
 import manager.model.ManagerModel;
-import manager.model.ManagerModelInterfase;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -11,13 +11,13 @@ import java.nio.file.Path;
 
 public class XMLSaver implements Saver {
     @Override
-    public void save(Path path, ManagerModelInterfase model) {
+    public void save(Path path, XMLJournalTasks journal) {
         try {
-            JAXBContext context = JAXBContext.newInstance(ManagerModel.class);
+            JAXBContext context = JAXBContext.newInstance(XMLJournalTasks.class);
             Marshaller marshaller = context.createMarshaller();
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-            marshaller.marshal(model, path.toFile());
+            marshaller.marshal(journal, path.toFile());
         } catch (PropertyException e) {
             e.printStackTrace();
         } catch (JAXBException e) {

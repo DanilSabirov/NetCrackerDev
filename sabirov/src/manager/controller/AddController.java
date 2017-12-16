@@ -22,6 +22,5 @@ public class AddController extends Editor{
     public void save() {
         Task task = parseTask();
         model.addTask(task);
-        model.save();
     }
 }

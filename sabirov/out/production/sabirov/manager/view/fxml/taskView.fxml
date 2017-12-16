@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="114.0" prefWidth="514.0"  xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="172.0" layoutY="58.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -22,16 +22,12 @@
                               <Insets left="10.0" top="5.0" />
                            </HBox.margin>
                            <children>
-                              <Label fx:id="name" text="Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="name" prefWidth="424.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="14.0" />
+                                    <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane>
-                           <children>
-                              <SplitMenuButton layoutX="-63.0" layoutY="23.0" mnemonicParsing="false" text="..." AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                              <SplitMenuButton mnemonicParsing="false" text="..." AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                                 <items>
                                   <MenuItem fx:id="editItem" mnemonicParsing="false" onAction="#onClickEdit" text="Edit" />
                                   <MenuItem fx:id="deleteItem" mnemonicParsing="false" onAction="#onClickDelete" text="Delete" />
@@ -43,9 +39,9 @@
                   </HBox>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="50.0" VBox.vgrow="ALWAYS">
+            <AnchorPane VBox.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="description" layoutX="51.0" layoutY="39.0" text="Des" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="description" layoutX="51.0" layoutY="39.0" textAlignment="CENTER" textOverrun="CLIP" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets left="10.0" top="5.0" />
                      </padding>
@@ -55,11 +51,58 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane VBox.vgrow="ALWAYS">
+            <AnchorPane prefWidth="502.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Label fx:id="endTime" layoutX="36.0" layoutY="5.0" text="Label" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" />
-                  <Label fx:id="dateCreation" layoutX="288.0" layoutY="5.0" text="Label" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="250.0" />
-                  <Label fx:id="priority" layoutX="426.0" layoutY="5.0" text="Label" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                  <HBox prefHeight="26.0" prefWidth="502.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label prefHeight="26.0" prefWidth="223.0" text="Date creation">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="26.0" prefWidth="203.0" text="End time">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label text="Priority">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <font>
+                              <Font name="System Bold Italic" size="13.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                     <children>
+                        <Label fx:id="dateCreation" prefHeight="16.0" prefWidth="225.0">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="endTime" prefHeight="26.0" prefWidth="227.0" text="endTime">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="priority" text="priority">
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </AnchorPane>
          </children>

@@ -7,9 +7,14 @@ import javafx.stage.Stage;
 import manager.controller.ConsoleController;
 import manager.controller.ControllerInterface;
 import manager.controller.MainWindowController;
+import manager.journal.JournalTasks;
+import manager.journal.XMLJournalTasks;
 import manager.loader.Loader;
 import manager.loader.XMLLoader;
+import manager.model.ManagerModel;
 import manager.model.ManagerModelInterfase;
+import manager.saver.Saver;
+import manager.saver.XMLSaver;
 import manager.task.Task;
 
 import java.nio.file.Path;
@@ -17,15 +22,19 @@ import java.nio.file.Paths;
 import java.util.Calendar;
 
 public class Main extends Application{
-    private static ManagerModelInterfase model;
+    private static JournalTasks journal;
 
-    public static Path pathModel = Paths.get("save.xml");
+    public static Path pathJournal = Paths.get("save.xml");
+
+    public static ManagerModelInterfase model;
 
     private static Stage stage;
 
     public static void main(String[] args) {
-      //  args = new String[1];
-      //  args[0] = "-c";
+      //    args = new String[1];
+       //   args[0] = "-c";
+        loadJournal();
+        model = new ManagerModel(journal);
         if (args.length == 0){
             launch(args);
         }
@@ -36,14 +45,13 @@ public class Main extends Application{
     }
 
     private static void startConsole() {
-        loadModel();
         ControllerInterface controller = new ConsoleController(model);
+ //       addTestTasks(controller);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
-        loadModel();
         MainWindowController controller = new MainWindowController(model);
 
         primaryStage.setTitle("Task manager");
@@ -51,16 +59,22 @@ public class Main extends Application{
         primaryStage.show();
     }
 
-    private static void loadModel(){
-        Loader loader = new XMLLoader();
-        model = loader.load(pathModel);
+    @Override
+    public void stop(){
+        Saver saver = new XMLSaver();
+        saver.save(pathJournal, (XMLJournalTasks) journal);
     }
 
     public static Stage getStage() {
         return stage;
     }
 
-    private void addTestTasks(ControllerInterface controller){
+    private static void loadJournal(){
+        Loader loader = new XMLLoader();
+        journal = loader.load(pathJournal);
+    }
+
+    private static void addTestTasks(ControllerInterface controller){
         Calendar cal = Calendar.getInstance();
 
         Task t1 = new Task();
@@ -68,7 +82,7 @@ public class Main extends Application{
         t1.setDescription("TaskManager");
         cal.set(2017, 11, 30);
         t1.setEndTime(cal.getTime());
-        t1.setColor(Color.color(255f, 0f, 0f));
+        t1.setColor(Color.rgb(255, 0, 0));
         t1.setPriority(10);
 
         Task t2 = new Task();
@@ -76,7 +90,7 @@ public class Main extends Application{
         t2.setDescription("Operator WITH");
         cal.set(2017, 12, 7);
         t2.setEndTime(cal.getTime());
-        t2.setColor(Color.color(10, 150, 55));
+        t2.setColor(Color.rgb(10, 150, 55));
         t2.setPriority(6);
 
         Task t3 = new Task();
@@ -84,7 +98,7 @@ public class Main extends Application{
         t3.setDescription("EAV");
         cal.set(2017, 12, 14);
         t3.setEndTime(cal.getTime());
-        t3.setColor(Color.color(10, 150, 55));
+        t3.setColor(Color.rgb(10, 150, 55));
         t3.setPriority(6);
 
         Task t4 = new Task();
@@ -92,7 +106,7 @@ public class Main extends Application{
         t4.setDescription("Thread");
         cal.set(2017, 12, 14);
         t4.setEndTime(cal.getTime());
-        t4.setColor(Color.color(100, 150, 205));
+        t4.setColor(Color.rgb(100, 150, 205));
         t4.setPriority(6);
 
         Task t5 = new Task();
@@ -100,7 +114,7 @@ public class Main extends Application{
         t5.setDescription("Analytics functions in oracle");
         cal.set(2017, 12, 21);
         t5.setEndTime(cal.getTime());
-        t5.setColor(Color.color(10, 150, 55));
+        t5.setColor(Color.rgb(10, 150, 55));
         t5.setPriority(6);
 
         Task t6 = new Task();
@@ -108,7 +122,7 @@ public class Main extends Application{
         t6.setDescription("Server");
         cal.set(2017, 12, 30);
         t6.setEndTime(cal.getTime());
-        t6.setColor(Color.color(255, 0, 0));
+        t6.setColor(Color.rgb(255, 0, 0));
         t6.setPriority(6);
 
         controller.addTask(t1);

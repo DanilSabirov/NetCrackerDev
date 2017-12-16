@@ -52,14 +52,16 @@ public class MainWindowView extends BaseView {
     }
 
     private void initSorting(){
+        final Sorting firtSort = Sorting.REVERSEDATECREATED;
+
         sorting.setItems(FXCollections.observableArrayList(Sorting.values()));
-        sorting.getSelectionModel().selectFirst();
+        sorting.getSelectionModel().select(Sorting.valueOf(firtSort.toString()));
 
         sorting.getSelectionModel().selectedIndexProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                Sorting tmp = Sorting.values()[newValue.intValue()];
-                changeSorting(tmp);
+                Sorting sorting = Sorting.values()[newValue.intValue()];
+                changeSorting(sorting);
             }
         });
     }
