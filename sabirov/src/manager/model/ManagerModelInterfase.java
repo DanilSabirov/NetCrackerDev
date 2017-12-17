@@ -6,25 +6,25 @@ import manager.task.Task;
 import java.util.List;
 
 public interface ManagerModelInterfase {
-    public void initialize();
+    void initialize();
 
-    public void addTask(Task task);
+    void addTask(Task task);
 
-    public void removeTask(int index);
+    void removeTask(int index);
 
-    public void editTask(int index, Task newTask);
+    void editTask(int index, Task newTask);
 
-    public Task getTask(int index);
+    Task getTask(int index);
 
-    public int getNumberTask();
+    int getNumberTask();
 
-    public void registerObserver(Observer observer);
+    void registerObserver(Observer observer);
 
-    public void removeObserver(Observer observer);
+    void removeObserver(Observer observer);
 
-    public void changeSorting(Sorting sorting);
+    void changeSorting(Sorting sorting);
 
-    public List getListTasks();
+    List getListTasks();
 
-    public void save();
+    void save();
 }

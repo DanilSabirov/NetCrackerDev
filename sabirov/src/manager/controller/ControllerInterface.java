@@ -5,13 +5,13 @@ import manager.task.Task;
 
 public interface ControllerInterface {
 
-    public void addTask(Task task);
+    void addTask(Task task);
 
-    public void removeTask(int pos);
+    void removeTask(int pos);
 
-    public void editTask(int pos, Task newTask);
+    void editTask(int pos, Task newTask);
 
-    public void changeSorting(Sorting sorting);
+    void changeSorting(Sorting sorting);
 
-    public void save();
+    void save();
 }

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="sabirov:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/sabirov_jar</output-path>
+    <root id="archive" name="sabirov.jar">
+      <element id="module-output" name="sabirov" />
+    </root>
+  </artifact>
+</component>
