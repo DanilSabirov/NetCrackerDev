@@ -1,15 +1,20 @@
 package manager.view;
 
+import manager.controller.ControllerInterface;
+import manager.model.ManagerModelInterface;
 import manager.model.Sorting;
 import manager.task.Task;
-import manager.controller.ControllerInterface;
-import manager.model.ManagerModelInterfase;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.sun.deploy.util.SessionState.save;
+/**
+ * Console view.
+ */
 
 public class ConsoleView extends BaseView {
 
@@ -17,7 +22,7 @@ public class ConsoleView extends BaseView {
     private final int WIDTH = 40;
     private Scanner in;
 
-    public ConsoleView(ManagerModelInterfase model, ControllerInterface controller) {
+    public ConsoleView(ManagerModelInterface model, ControllerInterface controller) {
         super(model, controller);
         in = new Scanner(System.in);
         update();

@@ -1,27 +1,38 @@
 package manager.controller;
 
-import manager.model.ManagerModelInterfase;
+import manager.model.ManagerModelInterface;
 import manager.task.Task;
-import manager.view.EditorView;
 
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Calendar;
-import java.util.Date;
+
+/**
+ * Controller for task editing.
+ */
 
 public class EditorController extends Editor{
     private int indexTask;
 
-    public EditorController(ManagerModelInterfase model, int indexTask) {
+    /**
+     * Create editor view for task.
+     */
+
+    public EditorController(ManagerModelInterface model, int indexTask) {
         super(model);
         this.indexTask = indexTask;
     }
 
+    /**
+     * Opens editor window.
+     */
     public void editTask(){
         fillView(indexTask);
         view.show("Edit task");
     }
 
+    /**
+     * Fill edit view field.
+     */
     private void fillView(int indexTask){
         Task task = model.getTask(indexTask);
 

@@ -15,6 +15,10 @@ import manager.task.Task;
 
 import java.io.IOException;
 
+/**
+ * Notification window.
+ */
+
 public class NotificationView {
     @FXML
     private BorderPane root;
@@ -43,6 +47,9 @@ public class NotificationView {
         }
     }
 
+    /**
+     * Shows notification window.
+     */
     public void show(){
         Platform.runLater(() -> {
             name.setText(task.getName());

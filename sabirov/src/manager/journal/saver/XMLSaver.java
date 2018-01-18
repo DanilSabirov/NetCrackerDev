@@ -1,13 +1,16 @@
-package manager.saver;
+package manager.journal.saver;
 
 import manager.journal.XMLJournalTasks;
-import manager.model.ManagerModel;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.PropertyException;
 import java.nio.file.Path;
+
+/**
+ * The saver journal in XML format.
+ */
 
 public class XMLSaver implements Saver {
     @Override

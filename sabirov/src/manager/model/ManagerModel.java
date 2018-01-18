@@ -5,14 +5,14 @@ import manager.Main;
 import manager.Observer;
 import manager.journal.JournalTasks;
 import manager.journal.XMLJournalTasks;
-import manager.saver.Saver;
-import manager.saver.XMLSaver;
+import manager.journal.saver.Saver;
+import manager.journal.saver.XMLSaver;
 import manager.task.Task;
 
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class ManagerModel implements ManagerModelInterfase {
+public class ManagerModel implements ManagerModelInterface {
     private JournalTasks journal;
 
     private List<Task> sortedListTasks;

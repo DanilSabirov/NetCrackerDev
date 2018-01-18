@@ -13,12 +13,16 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import manager.controller.ControllerInterface;
 import manager.controller.TaskViewController;
-import manager.model.ManagerModelInterfase;
+import manager.model.ManagerModelInterface;
 import manager.model.Sorting;
 import manager.task.Task;
 
 import java.io.IOException;
 import java.util.List;
+
+/**
+ * Main window.
+ */
 
 public class MainWindowView extends BaseView {
     @FXML
@@ -38,7 +42,7 @@ public class MainWindowView extends BaseView {
 
     private Parent root;
 
-    public MainWindowView(ManagerModelInterfase model, ControllerInterface controller) {
+    public MainWindowView(ManagerModelInterface model, ControllerInterface controller) {
         super(model, controller);
         fxmlLoader = new FXMLLoader(getClass().getResource("fxml/mainWindow.fxml"));
         fxmlLoader.setController(this);
@@ -86,6 +90,10 @@ public class MainWindowView extends BaseView {
         return taskController.getViewRoot();
     }
 
+    /**
+     * Returns main window.
+     * @return
+     */
     public Parent getRoot(){
         return root;
     }

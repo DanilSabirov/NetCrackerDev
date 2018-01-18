@@ -1,6 +1,6 @@
 package manager.controller;
 
-import manager.model.ManagerModelInterfase;
+import manager.model.ManagerModelInterface;
 import manager.task.Task;
 import manager.view.EditorView;
 
@@ -8,16 +8,24 @@ import java.time.ZoneId;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Base task editor.
+ */
+
 public abstract class Editor {
-    protected ManagerModelInterfase model;
+    protected ManagerModelInterface model;
 
     protected EditorView view;
 
-    public Editor(ManagerModelInterfase model) {
+    public Editor(ManagerModelInterface model) {
         this.model = model;
         view = new EditorView(this);
     }
 
+    /**
+     * Generates task from editor view.
+     * @return
+     */
     protected Task parseTask(){
         Task task = new Task();
 
@@ -37,5 +45,8 @@ public abstract class Editor {
         return task;
     }
 
+    /**
+     * Saves changes.
+     */
     public abstract void save();
 }

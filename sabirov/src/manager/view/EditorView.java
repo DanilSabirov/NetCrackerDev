@@ -9,18 +9,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import jdk.nashorn.internal.parser.DateParser;
 import manager.Main;
 import manager.controller.Editor;
-import manager.controller.EditorController;
-import manager.model.Sorting;
-import manager.task.Task;
 
 import java.io.IOException;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
+
+/**
+ * Editor window.
+ */
 
 public class EditorView {
     @FXML
@@ -93,6 +90,9 @@ public class EditorView {
         this.minutes.getSelectionModel().select(0);
     }
 
+    /**
+     * Shows editor window.
+     */
     public void show(String title){
         dialogStage = new Stage();
         dialogStage.setTitle(title);

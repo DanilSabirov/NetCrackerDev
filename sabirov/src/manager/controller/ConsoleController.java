@@ -1,17 +1,21 @@
 package manager.controller;
 
+import manager.model.ManagerModelInterface;
 import manager.model.Sorting;
 import manager.task.Task;
-import manager.model.ManagerModelInterfase;
 import manager.view.BaseView;
 import manager.view.ConsoleView;
+
+/**
+ * Controller for console view.
+ */
 
 public class ConsoleController implements ControllerInterface {
 
     private BaseView view;
-    private ManagerModelInterfase model;
+    private ManagerModelInterface model;
 
-    public ConsoleController(ManagerModelInterfase model) {
+    public ConsoleController(ManagerModelInterface model) {
         this.model = model;
         this.view = new ConsoleView(model, this);
     }

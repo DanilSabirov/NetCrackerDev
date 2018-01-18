@@ -1,14 +1,13 @@
 package manager;
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import manager.task.Task;
 import manager.view.NotificationView;
 
-import java.io.IOException;
 import java.util.TimerTask;
+
+/**
+ *Notification dialog box.
+ */
 
 public class DialogNotification extends TimerTask implements Notification {
     private NotificationView view;

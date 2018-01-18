@@ -1,12 +1,14 @@
 package manager.journal;
 
-import manager.Main;
 import manager.task.Task;
-import manager.saver.*;
 
 import javax.xml.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * The journal that stores tasks in XML format.
+ */
 
 @XmlRootElement(name = "jornal")
 @XmlAccessorType(XmlAccessType.NONE)

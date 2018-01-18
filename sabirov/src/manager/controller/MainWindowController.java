@@ -1,17 +1,21 @@
 package manager.controller;
 
 import javafx.scene.Parent;
+import manager.model.ManagerModelInterface;
 import manager.model.Sorting;
 import manager.task.Task;
-import manager.model.ManagerModelInterfase;
 import manager.view.MainWindowView;
+
+/**
+ * Controller for graphic view.
+ */
 
 public class MainWindowController implements ControllerInterface {
 
-    private ManagerModelInterfase model;
+    private ManagerModelInterface model;
     private MainWindowView view;
 
-    public MainWindowController(ManagerModelInterfase model) {
+    public MainWindowController(ManagerModelInterface model) {
         this.model = model;
         this.view = new MainWindowView(model, this);
     }
@@ -42,6 +46,10 @@ public class MainWindowController implements ControllerInterface {
         model.save();
     }
 
+    /**
+     * Returns main window.
+     * @return main window.
+     */
     public Parent getViewRoot(){
         return view.getRoot();
     }

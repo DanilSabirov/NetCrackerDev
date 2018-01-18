@@ -4,15 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
-import javafx.scene.layout.AnchorPane;
 import manager.controller.TaskViewController;
-import manager.task.Task;
 
 import java.io.IOException;
-import java.util.Random;
+
+/**
+ * Task view.
+ */
 
 public class TaskView {
     @FXML
@@ -53,26 +53,45 @@ public class TaskView {
         }
     }
 
+    /**
+     * Sets name label.
+     */
     public void setName(String name) {
         this.name.setText(name);
     }
 
+    /**
+     * Sets description label.
+     */
     public void setDescription(String description) {
         this.description.setText(description);
     }
 
+    /**
+     * Sets end time label.
+     */
     public void setEndTime(String endTime) {
         this.endTime.setText(endTime);
     }
 
+    /**
+     * Sets date creation label.
+     */
     public void setDateCreation(String dateCreation) {
         this.dateCreation.setText(dateCreation);
     }
 
+    /**
+     * Sets priority label.
+     */
     public void setPriority(String priority) {
         this.priority.setText(priority);
     }
 
+    /**
+     * Returns root view.
+     * @return root view.
+     */
     public Parent getRoot() {
         return root;
     }

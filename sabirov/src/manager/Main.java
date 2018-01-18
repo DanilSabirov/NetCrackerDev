@@ -9,12 +9,12 @@ import manager.controller.ControllerInterface;
 import manager.controller.MainWindowController;
 import manager.journal.JournalTasks;
 import manager.journal.XMLJournalTasks;
-import manager.loader.Loader;
-import manager.loader.XMLLoader;
+import manager.journal.loader.Loader;
+import manager.journal.loader.XMLLoader;
+import manager.journal.saver.Saver;
+import manager.journal.saver.XMLSaver;
 import manager.model.ManagerModel;
-import manager.model.ManagerModelInterfase;
-import manager.saver.Saver;
-import manager.saver.XMLSaver;
+import manager.model.ManagerModelInterface;
 import manager.task.Task;
 
 import java.nio.file.Path;
@@ -26,7 +26,7 @@ public class Main extends Application{
 
     public static Path pathJournal = Paths.get("save.xml");
 
-    public static ManagerModelInterfase model;
+    public static ManagerModelInterface model;
 
     private static Stage stage;
 
