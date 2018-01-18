@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jornal>
+    <listTasks>
+        <task>
+            <name>Dev_1</name>
+            <description>TaskManager</description>
+            <dateCreation>2017-12-16T20:39:41.141+04:00</dateCreation>
+            <endTime>2017-12-30T20:39:41.135+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>10</priority>
+        </task>
+        <task>
+            <name>Java 7</name>
+            <description>Thread</description>
+            <dateCreation>2017-12-16T20:39:41.141+04:00</dateCreation>
+            <endTime>2018-01-14T20:39:41.135+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>SQL_6</name>
+            <description>Operator WITH</description>
+            <dateCreation>2017-12-16T20:39:41.141+04:00</dateCreation>
+            <endTime>2018-01-07T20:39:41.135+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>SQL_7</name>
+            <description>EAV</description>
+            <dateCreation>2017-12-16T20:39:41.141+04:00</dateCreation>
+            <endTime>2018-01-14T20:39:41.135+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>SQL_8</name>
+            <description>Analytics functions in oracle</description>
+            <dateCreation>2017-12-16T20:39:41.141+04:00</dateCreation>
+            <endTime>2018-01-21T20:39:41.135+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+        <task>
+            <name>dev</name>
+            <description>Server</description>
+            <dateCreation>2017-12-16T20:39:41.141+04:00</dateCreation>
+            <endTime>2018-01-30T20:39:41.135+04:00</endTime>
+            <status>IN_PROGRESS</status>
+            <priority>6</priority>
+        </task>
+    </listTasks>
+</jornal>
