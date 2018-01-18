@@ -1,0 +1,8 @@
+manager
+manager.controller
+manager.journal
+manager.journal.loader
+manager.journal.saver
+manager.model
+manager.task
+manager.view
